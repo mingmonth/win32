@@ -16,10 +16,7 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 INT_PTR CALLBACK    DlgProc(HWND, UINT, WPARAM, LPARAM);
 
 void init() {
-	AllocConsole();
-	//freopen("CONIN$", "r", stdin);
-	//freopen("CONOUT$", "w", stdout);
-	//freopen("CONOUT$", "w", stderr);
+	AllocConsole();	
 	freopen("CONOUT$", "wt", stdout);
 }
 
@@ -62,10 +59,8 @@ INT_PTR CALLBACK DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 			printf("gettext: %s\n", string);			
 			MessageBox(hDlg, string, "test", 0);			
 		}
-
-		//LOWORD(wParam) == IDOK || 
-		if (LOWORD(wParam) == IDCANCEL)
-		{
+		
+		if (LOWORD(wParam) == IDCANCEL) {
 			FreeConsole();
 			EndDialog(hDlg, LOWORD(wParam));
 			return (INT_PTR)TRUE;
